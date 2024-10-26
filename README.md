@@ -1,2 +1,2 @@
-# Amazon-Sales-Data-Analysis-and-Processing-using-PySpark-and-Airflow
+# Amazon-Sales-Data-Analysis-and-Processing-using-PySpark-and-Airflow-Project
 The Amazon Sales Data Analysis and Processing project uses PySpark and Airflow to analyze Amazon sales data by filtering products with over 20% discounts, calculating total discounts, and ranking products by popularity. The results are merged into a final file and stored in S3, showcasing efficient data processing and cloud storage.
