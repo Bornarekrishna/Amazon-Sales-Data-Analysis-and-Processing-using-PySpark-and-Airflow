@@ -27,7 +27,7 @@ dag = DAG(
 
 # Task 1: Extract Data  
 def extract_data():
-    response = requests.get('https://krish-airflowpro.s3.ap-south-1.amazonaws.com/amazon.csv')
+    response = requests.get('https://github.com/Bornarekrishna/Amazon-Sales-Data-Analysis-and-Processing-using-PySpark-and-Airflow-Project/blob/main/amazon.csv')
     response.raise_for_status()
     with open('/tmp/amazon_sales.csv', 'wb') as file:
         file.write(response.content)
