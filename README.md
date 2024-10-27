@@ -17,35 +17,36 @@ The Amazon Sales Data Analysis and Processing project leverages cloud and big da
 
 ## Project Execution Flow
 
-1. Extract Data
-Process: Trigger the extract_data task to download the raw Amazon sales data from a to specified location to the local file system as /tmp/amazon_sales.csv.
-Output: Stores raw data for initial processing.
+1. Extract Data:
+* Process: Trigger the extract_data task to download the raw Amazon sales data from a to specified location to the local file system as /tmp/amazon_sales.csv.
+* Output: Stores raw data for initial processing.
 
 2. Trigger Data Processing Pipeline (Daily)
-Process: A scheduled Airflow DAG runs daily, triggering the following data processing tasks.
-Output: Initiates the end-to-end data transformation and analysis pipeline.
+* Process: A scheduled Airflow DAG runs daily, triggering the following data processing tasks.
+* Output: Initiates the end-to-end data transformation and analysis pipeline.
 
 3. Read and Select Columns
-Task: read_amazon_data
-Operation: Spark reads the CSV file, selecting essential columns (e.g., product details, pricing, ratings) and stores this refined data for further processing.
-Output: Intermediate processed data stored in /tmp/amazon_data.csv.
+* Task: read_amazon_data
+* Operation: Spark reads the CSV file, selecting essential columns (e.g., product details, pricing, ratings) and stores this refined data for further processing.
+* Output: Intermediate processed data stored in /tmp/amazon_data.csv.
 
 4. Trigger Transformation Tasks
-Task: Process each transformation on the dataset:
-process_data_task_1: Filters products with more than 20% discount.
-process_data_task_2: Calculates total discount amounts.
-process_data_task_3: Sorts products based on popularity by rating_count.
-Output: For merging, each task saves results as separate files (task1_output.csv, task2_output.csv, task3_output.csv).
+
+* Task: Process each transformation on the dataset:
+* process_data_task_1: Filters products with more than 20% discount.
+* process_data_task_2: Calculates total discount amounts.
+* process_data_task_3: Sorts products based on popularity by rating_count.
+* Output: For merging, each task saves results as separate files (task1_output.csv, task2_output.csv, task3_output.csv).
 
 5. Combine Transformation Results
-Task: merge_results
-Operation: Joins outputs from each transformation task on product_id, removing duplicates and sorting the final data by popularity.
-Output: Final processed data stored in /tmp/final_amazon_sales_data.csv.
+* Task: merge_results
+* Operation: Joins outputs from each transformation task on product_id, removing duplicates and sorting the final data by popularity.
+* Output: Final processed data stored in /tmp/final_amazon_sales_data.csv.
 
 6. Load Final Output into S3
-Task: upload_data_s3
-Operation: The final output is uploaded to a designated S3 bucket (final-amazon-sales-data-pyspark-bucket) for storage and further analysis.
-Output: Data available for analysis in S3, ready for further ingestion or querying.
+* Task: upload_data_s3
+* Operation: The final output is uploaded to a designated S3 bucket (final-amazon-sales-data-pyspark-bucket) for storage and further analysis.
+* Output: Data available for analysis in S3, ready for further ingestion or querying.
 
 # Successfully Completed Workflow
 ![Workflow](https://github.com/Bornarekrishna/Amazon-Sales-Data-Analysis-and-Processing-using-PySpark-and-Airflow-Project/blob/main/Workflow_task_done.png)
