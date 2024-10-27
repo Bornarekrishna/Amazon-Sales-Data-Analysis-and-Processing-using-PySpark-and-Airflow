@@ -17,7 +17,7 @@ The Amazon Sales Data Analysis and Processing project leverages cloud and big da
 
 ## Project Execution Flow
 
-1. Extract Data from S3
+1. Extract Data
 Process: Trigger the extract_data task to download the raw Amazon sales data from a to specified location to the local file system as /tmp/amazon_sales.csv.
 Output: Stores raw data for initial processing.
 
